@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>string rotation example</title>
+        
+        
+        <style>
+            div.button{
+                display:inline-block;
+                background:#33bb;
+                padding:60px;
+                color:white;
+                cursor:pointer;
+            }
+            p.word{
+                font-size:5em;
+                padding-left:20px;
+                padding-right:20px;
+            }
+            div.container{
+                width:60%;
+                margin:0 auto;
+            }
+            div.container>*{
+                display:inline-block;
+                vertical-align:middle;
+            }
+            </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="container">
+                    <div class="button left">&lt</div>
+                    <p class="word"></p>
+                    <div class="button right">&gt</div>
+                </div>
+
+            </div>
+           <input type="text" value="number" id="number">
+        <script>
+            let wordBox=document.querySelector('.word');
+            let leftButton=document.querySelector('.left');
+            let rightButton=document.querySelector('.right');
+            let word="hello";
+
+            leftButton.addEventListener('click',(e)=>{
+                word=rotateLeft(word);
+                wordBox.textContent=word;
+            });
+            rightButton.addEventListener('click',(e)=>{
+                word=rotateRight(word);
+                wordBox.textContent=word;
+            });
+       
+            wordBox.textContent=word;
+            function rotateOnceLeft(w){
+                return w.slice(1)+w[0];
+            }
+            var t1 = document.getElementById("number");
+            function rotateLeft(w){
+               // let newString;
+                for( let i=0;i<t1.value;i++)
+                w=rotateOnceLeft(w);
+                return w;
+            }
+            function rotateOnceRight(w){
+                return w[w.length-1]+w.substring(0,w.length-1);
+                //return w.slice(w.length-1)+w[0]
+               //return w.slice(w)+w[w.length-1];
+            }
+            var t2 = document.getElementById("number");
+            function rotateRight(w){
+                //alert("t1=="+t2)
+               // let newString;
+                for( let i=0;i<t2.value;i++)
+                w=rotateOnceRight(w);
+                return w;
+            }
+
+        </script> 
+    </body>
+</html>           
